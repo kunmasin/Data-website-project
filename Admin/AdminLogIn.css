@@ -1,0 +1,57 @@
+body{
+    background: linear-gradient(to bottom, black, rgb(21, 0, 255));
+    margin-top: -80px;
+    color: white;
+    margin-bottom: -30px;
+}
+a{
+    text-decoration: underline;
+    color: yellow;
+}
+.container{
+color: white;
+width: 400px;
+height: 410px;
+padding: 20px;
+margin: 270px;
+border-radius: 8px;
+outline: 3px solid blue;
+}
+
+#loggedIN{
+    text-decoration: none;
+}
+.username{
+border: none;
+border-bottom: 2px solid blue;
+margin: 20px;
+width: 350px;
+padding: 10px;
+border-radius: 6px;
+text-align: center;
+}
+.password{
+border: none;
+border-bottom: 2px solid blue;
+margin: 20px;
+width: 350px;
+padding: 10px;
+border-radius: 6px;
+text-align: center;
+
+}
+.login{
+background:linear-gradient(rgb(3, 73, 214), black);
+text-align: center;
+margin: 70px;
+width: 190px;
+color: white;
+padding: 10px;
+border: 3px solid white;
+border-radius: 8px;
+margin-bottom: -100px;
+}
+.error{
+color:yellow;
+}
+

@@ -1,5 +1,5 @@
 <?php 
-include ("dataDatabaseLogin.php");
+include_once ("dataDatabaseLogin.php");
 if (!isset($_COOKIE['users'])){
     header('location: DataLogIn.php');
     exit;
@@ -23,8 +23,8 @@ if($conn->query($sql) == TRUE){
 }else{
     echo "Error: " .$sql."<br>".$conn->error;
 }
-$conn->close();
-
+include ('balance.php');
+include ('cookie.php');
 ?>
 <!DOCTYPE php>
 <php lang="en">
@@ -42,30 +42,13 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="d-flex">
-        <div class="dashboard-background" id="nav-menu">
-            <img class="user-image" src="../Day7/Day7templates/Photoroom-20240526_213830.png" alt="">
-            <h4 class="text-center">ONIYE ADBULLAHI</h4>
-            <ul>
-                <li><a href="..\Day7\DataDashboard.php">DASHBOARD</a></li>
-                <li><a href="..\Day7\DataDashoardAirtime.php">BUY AIRTIME</a></li>
-                <li><a href="..\Day7\DataDashboardData.php">BUY DATA</a></li>
-                <li><a href="..\Day7\DataDashboardCable.php">CABLE SUBSCRIPTION</a></li>
-                <li><a href="..\Day7\DataDashboardUtility.php">BILL PAYMENTS</a></li>
-                <li><a href="..\Day7\DataFundWallet.php">FUND WALLET</a></li>
-                <li><a href="..\Day7\DataWallet2Wallet.php">WALLET 2 WALLET</a></li>
-                <li><a href="..\Day7\DataTransaction.php">TRANSACTION HISTORY</a></li>
-                <li><a href="..\Day7\DataAccountSetting.php">ACCOUNT SETTINGS</a></li>
-                <li><a href="..\Day7\DataLogOut.php">LOGOUT</a></li>
-            </ul>
-        </div>
-         
+    <?php include('sidebar.php') ?>
+      
         <div class="container">
-            <button class="menu-toggle btn btn-primary" onclick="toggleMenu()">&#9776;</button>
             <h3 style="text-transform: uppercase;">WELCOME <?=$user['names']?></h3>
             <div class="dashboard-details p-3">
                <div style="justify-content: space-between;" class="d-flex">
-                <h5>Your Balance is: &#8358 <?php include ('balance.php')?></h5>
+                <h5>Your Balance is: &#8358 <?php echo $balance ?></h5>
                 <a style="width: 10%; height: 10%;" href="https://chat.whatsapp.com/J8HKx1SjAQyBezrFbYQdH1"><img style="width: 35%; height: 35%;" src="..\Day7\Day7templates\whatsapp.png.png" alt=""></a>
                 </div>
                 <div style="justify-content: space-between;" class="d-flex mt-2">
@@ -122,21 +105,21 @@ $conn->close();
                  <!--List of Services-->
                  <div class="container" id="list-of-services">
                     <div class="d-flex">
-                        <a href="..\Day7\DataDashoardAirtime.php">Buy Airtime</a>
-                        <a href="..\Day7\DataDashboardData.php">Buy Data</a>
-                        <a href="..\Day7\DataDashboardCable.php">Cable Subscription</a>
+                        <a href="..\Day7\DataDashoardAirtime.php" id="servicesa">Buy Airtime</a>
+                        <a href="..\Day7\DataDashboardData.php" id="servicesa">Buy Data</a>
+                        <a href="..\Day7\DataDashboardCable.php" id="servicesa">Cable Subscription</a>
                     </div>
 
                     <div class="d-flex">
-                        <a href="..\Day7\DataDashboardUtility.php">Pay Bills</a>
-                        <a href="..\Day7\DataFundWallet.php">Fund Wallet</a>
-                        <a href="">Transaction History</a>
+                        <a href="..\Day7\DataDashboardUtility.php" id="servicesa">Pay Bills</a>
+                        <a href="..\Day7\DataFundWallet.php" id="servicesa">Fund Wallet</a>
+                        <a href="..\Day7\DataTransaction.php" id="servicesa">Transaction History</a>
                     </div>
 
                     <div class="d-flex">
-                        <a href="">Wallet 2 Wallet Funding</a>
-                        <a href="..\Day7\DataAccountSetting.php">Account Setting</a>
-                        <a href="">Sign Out</a>
+                        <a href="" id="servicesa">Wallet 2 Wallet Funding</a>
+                        <a href="..\Day7\DataAccountSetting.php" id="servicesa">Account Setting</a>
+                        <button id="servicesb"><a style="text-decoration:none; color: white;" href="..\Day7\DataLogOut.php">Sign Out</a></button>
                  </div>
            
 </div> <!--End of Begining-->

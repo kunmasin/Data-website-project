@@ -169,7 +169,7 @@
     <hr>
 
     <footer class="text-center">
-        <p>&#169; OURDATA 2024 All Right Reserved, Developed by Oniye Abdullahi</p>
+        <p>&#169; OURDATA <?php echo $year = date('Y') ?> All Right Reserved, Developed by FruitfulCode</p>
     </footer>
 </body>
 </php>

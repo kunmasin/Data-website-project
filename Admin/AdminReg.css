@@ -1,0 +1,48 @@
+body{
+    background: linear-gradient(to right, black, rgb(3, 47, 244));
+    color: white;
+    margin-bottom: -30px;
+}
+.container{
+    background-color: white;
+    color: black;
+    width: 400px;
+    height: 550px;
+    box-shadow: 3px 3px 3px 3px black;
+    padding: 20px;
+    margin: 40px;
+    border-radius: 8px;
+    outline: 3px solid blue;
+}
+.username{
+    border: none;
+    border-bottom: 2px solid blue;
+    margin: 20px;
+    width: 350px;
+    padding-bottom: 20px;
+}
+.password{ 
+    border: none;
+    border-bottom: 2px solid blue;
+    margin: 20px;
+    width: 350px;
+    padding-bottom: 20px;
+    
+}
+.register{
+    background:linear-gradient(blue, rgb(0, 0, 0));
+    text-align: center;
+    margin: 25px;
+    width: 190px;
+    color: white;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 10px;
+
+}
+#registered{
+    text-decoration: none;
+}
+.error{
+    color:#FF0000
+}

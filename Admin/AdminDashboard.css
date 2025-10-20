@@ -1,0 +1,784 @@
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    transition: all 0.3s;
+    background-color: blue;
+}
+
+img{
+    width: 200px;
+    margin-left: 20px;
+    margin-top: 20px;
+    height: 190px;
+    margin-bottom: 20px;
+    border-radius: 100px;
+    border: 2px solid white;
+}
+.sidebar.show {
+    left: 0;
+}
+
+.sidebar.hide {
+    left: -250px;
+}
+
+/* Hide the sidebar toggle button on large screens */
+.sidebar-toggle {
+    display: none;
+}
+.nav-link {
+    color: white;
+    margin: 20px;
+}
+
+.nav-link:hover {
+    background-color: #e9ecef;
+    color: #0056b3;
+    width: 300px;
+}
+
+.atRight {
+    margin-left: 260px; /* Adjust based on sidebar width */
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+.container1 {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Content sections */
+.data-content, .cable-content, .cables-buttons {
+    display: none;
+}
+
+.myImage{
+    margin-left: 25px;
+    border-radius: 100%;
+    border: 0.5px groove white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 180px;
+    height: 150px;
+    background-color: white;
+}
+
+.inDline{
+    color: white;
+    background-color: rgb(5, 29, 116);
+    width: 300px;
+    height: 750px;
+    margin-left: -8px; 
+    margin-top: -20px;
+}
+.h2{
+    color: black;
+}
+.t{
+    width: 200px;
+    height: 40px;
+    color: green;
+    font-size: 40px;
+}
+
+.u{
+    width: 200px;
+    height: 40px;
+    color: blue;
+    font-size: 40px;
+}
+
+.all{
+    width: 200px;
+    height: 40px;
+    color: brown;
+    font-size: 40px;
+}
+
+.atRight{
+    display: block;
+    margin-left: 310px; 
+    margin-top: -20px;
+}
+.main-container{
+    color: black;
+    background-color: white;
+    font-size: 10px;
+    height: 900px;
+    width: 1150px;
+    padding: 20px;
+    margin-bottom: 30px;
+    float: left;
+    margin-top: 30px;
+}
+.button-airtime{
+    background-color: green;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+
+.button-data{
+    background-color: blue;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+
+.button-bill{
+    background-color: rgb(227, 235, 5);
+    color: black;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+.button-cables{
+    background-color: rgb(239, 0, 0);
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+
+.pricing{
+    background-color: rgb(236, 232, 232);
+    width: 1170px;
+    padding: 10px;
+    color: black;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+}
+#container_airtime{
+    color: black;
+    background-color: rgb(234, 242, 5);
+    font-size: 10px;
+    height: 1110px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+.airtime{
+    background-color: rgb(241, 241, 0);
+    width: 1110px;
+    padding: 10px;
+    color: black;
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+}
+
+select{
+    width: 700px;
+    height: 45px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    
+}
+
+option{
+    font-size: 20px;
+}
+
+.input1{
+    width: 700px;
+    height: 53px;
+    padding: 5px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+span{
+    color: white;
+}
+
+.span{
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    padding: 16px;
+    margin-bottom: -15px;
+    color: black;
+    text-align: left;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    font-size: 15px;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.click{
+    background-color: green;
+    color: white;
+    border-radius: 6px;
+    float: right;
+    padding: 10px;
+    border: none;
+}
+label{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#container_data{
+    color: white;
+    background-color: rgb(201, 11, 11);
+    font-size: 10px;
+    height: 1110px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.data{
+    background-color: rgb(159, 14, 14);
+    width: 1110px;
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid white;
+}
+
+#container_bill{
+    color: white;
+    background-color: rgb(26, 102, 35);
+    font-size: 10px;
+    height: 800px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.bill{
+    background-color: rgb(17, 88, 37);
+    width: 1110px;
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid white;
+}
+
+#container_cables{
+    color: white;
+    background-color: rgb(2, 85, 33);
+    font-size: 10px;
+    height: 700px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.cables{
+    background-color: rgb(5, 113, 32);
+    width: 1110px;
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid white;
+}
+
+
+
+
+/* Sidebar styling */
+.sidebar {
+    position: fixed;
+    height: 100%;
+    width: 250px;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    transition: all 0.3s;
+    background-color: blue;
+}
+
+img{
+    width: 200px;
+    margin-left: 10px;
+    margin-top: 20px;
+    height: 190px;
+    margin-bottom: 20px;
+    border-radius: 100px;
+    border: 2px solid white;
+}
+.sidebar.show {
+    left: 0;
+}
+
+.sidebar.hide {
+    left: -250px;
+}
+
+/* Hide the sidebar toggle button on large screens */
+.sidebar-toggle {
+    display: none;
+}
+.nav-link {
+    color: white;
+    margin: 10px;
+}
+
+.nav-link:hover {
+    background-color: #e9ecef;
+    color: #0056b3;
+    width: 300px;
+}
+
+.atRight {
+    margin-left: 260px; /* Adjust based on sidebar width */
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+.container1 {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 1500px; /* Ensure the body does not exceed this width */
+}
+
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+}
+
+.btn.icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none; /* Remove default button border */
+}
+.content {
+    transition: margin-left 0.3s ease; /* Smooth transition */
+}
+
+/* Adjust the margin when the sidebar is shown */
+#inDline.show ~ .content {
+    margin-left: 300px; /* The width of the sidebar */
+}
+
+#inDline {
+    color: white;
+    background-color: rgb(9, 0, 176);
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -300px; /* Initially hidden */
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#inDline.show {
+    left: 0; /* Slide in */
+}
+
+/* Close Icon Styles */
+#closeSidebar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    margin: 10px;
+    cursor: pointer;
+    align-self: flex-end; /* Align to the top-right corner */
+}
+
+#closeSidebar:hover {
+    color: #ccc; /* Change color on hover */
+}
+
+/* Sidebar Content */
+.myImage {
+    margin: 20px;
+    border-radius: 100%;
+    border: 5px dotted white;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    margin-left: 60px;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    border-radius: 90px;
+}
+
+
+.myP {
+    color: white;
+    border-bottom: 0.5px groove white;
+    border-right: none;
+    border-left: none;
+    text-align: left;
+    margin-left: 8px;
+    height: 45px;
+    text-transform: uppercase;
+    font-family:sans-serif;
+}
+
+.myA {
+    color: white;
+    text-decoration: none;
+}
+
+.myA:hover {
+    text-decoration: none;
+    color: white;
+    /* Add underline on hover for better visibility */
+}
+.content{
+    margin-left: 200px;
+}
+
+/* Responsive styles */
+@media (max-width: 991.98px) {
+    .sidebar {
+        left: -250px;
+        margin-top: -60px;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .sidebar-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1001;
+    }
+
+    .atRight {
+        margin-left: 50px;
+        margin-top: 50px;
+    }
+}
+
+
+.main-container{
+    color: black;
+    background-color: white;
+    font-size: 10px;
+    height: 950px;
+    width: 1173px;
+    padding: 20px;
+    margin-bottom: 30px;
+    float: left;
+    margin-top: 70px;
+}
+.button-airtime{
+    background-color: green;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+
+.button-data{
+    background-color: blue;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+
+.button-bill{
+    background-color: rgb(227, 235, 5);
+    color: black;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+.button-cables{
+    background-color: rgb(239, 0, 0);
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+
+.pricing{
+    background-color: rgb(236, 232, 232);
+    width: 1170px;
+    padding: 10px;
+    color: black;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+}
+#container_airtime{
+    color: black;
+    background-color: rgb(234, 242, 5);
+    font-size: 10px;
+    height: 1150px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+.airtime{
+    background-color: rgb(241, 241, 0);
+    width: 1107px;
+    padding: 10px;
+    color: black;
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+}
+
+select{
+    width: 700px;
+    height: 45px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    
+}
+
+option{
+    font-size: 20px;
+}
+
+.input1{
+    width: 700px;
+    height: 53px;
+    padding: 5px;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+span{
+    color: white;
+}
+
+.span{
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    padding: 16px;
+    margin-bottom: -15px;
+    color: black;
+    text-align: left;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    font-size: 15px;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.click{
+    background-color: green;
+    color: white;
+    border-radius: 6px;
+    float: right;
+    padding: 10px;
+    border: none;
+}
+label{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#container_data{
+    color: white;
+    background-color: rgb(201, 11, 11);
+    font-size: 10px;
+    height: 1150px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.data{
+    background-color: rgb(159, 14, 14);
+    width: 1107px;
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid white;
+}
+
+#container_bill{
+    color: white;
+    background-color: rgb(26, 102, 35);
+    font-size: 10px;
+    height: 800px;
+    width: 1150px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.bill{
+    background-color: rgb(17, 88, 37);
+    width: 1137px;
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid white;
+}
+
+#container_cables{
+    color: white;
+    background-color: rgb(2, 85, 33);
+    font-size: 10px;
+    height: 750px;
+    width: 1190px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.cables{
+    background-color: rgb(5, 113, 32);
+    width: 1137px;
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid white;
+}
+
+
+
+/* Responsive styles */
+@media (max-width: 991.98px) {
+    .sidebar {
+        left: -250px;
+    }
+
+    .sidebar.show {
+        left: 0;
+    }
+
+    .sidebar-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1001;
+    }
+
+    .atRight {
+        margin-left: 50px;
+    }
+}

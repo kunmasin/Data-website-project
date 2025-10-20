@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN Gateways</title>
+    <link rel="stylesheet" href="../Admin/AdminGateway.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/c5355fa9b1.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+<body>
+<!-- Sidebar -->
+<nav class="sidebar bg-dark">
+    <img class="myImage" src="../images/IMG-20240326-WA0118.jpg" alt="Admin Image">
+    <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link" href="../Admin/AdminDashBoard.php"><i class="fa-solid fa-home"></i> Dashboard</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/AdminGateways.php"><i class="fa fa-file-code-o"></i> Gateways</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/Admin_Pricing.php"><i class="fa-solid fa-money-bill"></i> Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/AdminUsers.php"><i class="fas fa-user-friends"></i> Users</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/AdminPackages.php"><i class="fa-solid fa-users-between-lines"></i> Packages</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/AdminTransaction.php"><i class="fas fa-history"></i> Transaction History</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/AdminDeveloper.php"><i class="fas fa-code"></i> Developer</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/AdminSwitch.php"><i class="fa-solid fa-toggle-on"></i> Service Switch</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/AdminSettings.php"><i class="fa-solid fa-gear"></i> Settings</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/AdminCheckUpdate.php"><i class="fa-solid fa-gear"></i> Check for Update</a></li>
+        <li class="nav-item"><a class="nav-link" href="../Admin/Admin.php"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a></li>
+    </ul>
+</nav>
+
+<!-- Sidebar Toggle Button -->
+<button class="sidebar-toggle btn btn-primary">
+    <i class="fas fa-bars"></i>
+</button>
+
+<div class="atRight">
+    <div class="main-container">
+        <div class="pricing">
+            Gateways
+        </div>
+        <br>
+        <div class="nav-buttons">
+            <button class="button-airtime" onclick="showContainer('container_airtime')">Airtime</button>
+            <button class="button-data" onclick="showContainer('container_data')">Data</button>
+            <button class="button-bill" onclick="showContainer('container_bill')">Bill</button>
+            <button class="button-cables" onclick="showContainer('container_cables')">Cable</button>
+        </div>
+        <hr>
+
+        <!-- Airtime Container -->
+        <div id="container_airtime" class="container">
+            <div class="airtime">
+                Airtime Gateways
+            </div>
+            <h1>Airtime Settings and Documentation</h1>
+            <label>Airtime Status</label><br>
+            <select>
+                <option value="">Active</option>
+                <option value="">Activate</option>
+                <option value="">Deactivate</option>
+            </select>
+            <br>
+            <label>Airtime API URL</label><br>
+            <input class="input1" type="text" >
+            <br>
+            <label>Header Authorization</label><br>
+            <input class="input1" type="text" >
+            <br>
+            <label>Service Parameters</label><br>
+            <span class="span">Amount Attribute /Id</span><input class="input1" type="text" value="Amount">
+            <br>
+            <span class="span">Phone Number /Id</span><input class="input1" type="text" value="Mobile Number">
+            <br>
+            <span class="span">Network Attribute /Id</span><input class="input1" type="text" value="Network">
+            <br>
+            <span class="span">Request Attribute /Id</span><input class="input1" type="text" value="Request Id">
+            <br>
+            <label>Service Ids</label><br>
+            <span class="span">MTN</span><input class="input1" type="text" value="1">
+            <br>
+            <span class="span">AIRTEL</span><input class="input1" type="text" value="2">
+            <br>
+            <span class="span">GLO</span><input class="input1" type="text" value="3">
+            <br>
+            <span class="span">9MOBILE</span><input class="input1" type="text" value="4">
+            <br>
+            <button type="button" class="click"><i class="fa-solid fa-check"></i> Save Settings</button>
+        </div>
+
+        <!-- Data Container -->
+        <div id="container_data" class="container">
+            <div class="data">
+                Data Gateways
+            </div>
+            <h1>Data Settings and Documentations...</h1>
+            <label>Data Status</label><br>
+            <select>
+                <option value="">Active</option>
+                <option value="">Activate</option>
+                <option value="">Deactivate</option>
+            </select>
+            <br>
+            <label>Data API URL</label><br>
+            <input class="input1" type="text" >
+            <br>
+            <label>Header Authorization</label><br>
+            <input class="input1" type="text" >
+            <br>
+            <label>Service Parameters</label><br>
+            <span class="span">Amount Attribute /Id</span><input class="input1" type="text" value="Amount">
+            <br>
+            <span class="span">Phone Number /Id</span><input class="input1" type="text" value="Mobile Number">
+            <br>
+            <span class="span">Network Attribute /Id</span><input class="input1" type="text" value="Network">
+            <br>
+            <span class="span">Request Attribute /Id</span><input class="input1" type="text" value="Request Id">
+            <br>
+            <label>Service Ids</label><br>
+            <span class="span">MTN</span><input class="input1" type="text" value="1">
+            <br>
+            <span class="span">AIRTEL</span><input class="input1" type="text" value="2">
+            <br>
+            <span class="span">GLO</span><input class="input1" type="text" value="3">
+            <br>
+            <span class="span">9MOBILE</span><input class="input1" type="text" value="4">
+            <br>
+            <button type="button" class="click"><i class="fa-solid fa-check"></i> Save Settings</button>
+        </div>
+
+        <!-- Bill Container -->
+        <div id="container_bill" class="container">
+            <div class="bill">
+                Bill Payment Gateways
+            </div>
+            <h1>Bill Payment and Documentations...</h1>
+            <label>Bill Status</label><br>
+            <select>
+                <option value="">Active</option>
+                <option value="">Activate</option>
+                <option value="">Deactivate</option>
+            </select>
+            <br>
+            <label>Data API URL</label><br>
+            <input class="input1" type="text" >
+            <br>
+            <label>Header Authorization</label><br>
+            <input class="input1" type="text" >
+            <br>
+            <label>Service Parameters</label><br>
+            <span class="span">Amount Attribute /Id</span><input class="input1" type="text" value="Amount">
+            <br>
+            <span class="span">Meter Attribute /Id</span><input class="input1" type="text" value="Meter Number">
+            <br>
+            <span class="span">Meter Type Attribute /Id</span><input class="input1" type="text" value="Meter Type">
+            <br>
+            <span class="span">Disco Name Id</span><input class="input1" type="text" value="Disco_name">
+            <br>
+            <button type="button" class="click"><i class="fa-solid fa-check"></i> Save Settings</button>
+        </div>
+
+        <!-- Cable Container -->
+        <div id="container_cables" class="container">
+            <div class="cables">
+                Cable Gateways
+            </div>
+            <h1>Cable Settings and Documentations...</h1>
+            <label>Cable Status</label><br>
+            <select>
+                <option value="">Active</option>
+                <option value="">Activate</option>
+                <option value="">Deactivate</option>
+            </select>
+            <br>
+            <label>Cable API URL</label><br>
+            <input class="input1" type="text" >
+            <br>
+            <label>Header Authorization</label><br>
+            <input class="input1" type="text" >
+            <br>
+            <label>Service Parameters</label><br>
+            <span class="span">Cable Name Attribute /Id</span><input class="input1" type="text" value="Cable name">
+            <br>
+            <span class="span">Cable Plan Attribute /Id</span><input class="input1" type="text" value="cable plan">
+            <br>
+            <span class="span">Smart Card Id</span><input class="input1" type="text" value="smart_card_number">
+            <br>
+            <button type="button" class="click"><i class="fa-solid fa-check"></i> Save Settings</button>
+        </div>
+    </div> <!-- End of The basic container -->
+</div>
+
+<script src="AdminGateway.js"></script>
+<script>
+$(document).ready(function() {
+    $('.sidebar-toggle').click(function() {
+        $('.sidebar').toggleClass('show');
+    });
+});
+</script>
+</body>
+</html>

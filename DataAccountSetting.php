@@ -14,26 +14,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="d-flex">
-        <div class="dashboard-background" id="nav-menu">
-            <img class="user-image" src="../Day7/Day7templates/Photoroom-20240526_213830.png" alt="">
-            <h4 class="text-center">ONIYE ADBULLAHI</h4>
-            <ul>
-                <li><a href="..\Day7\DataDashboard.php">DASHBOARD</a></li>
-                <li><a href="..\Day7\DataDashoardAirtime.php">BUY AIRTIME</a></li>
-                <li><a href="..\Day7\DataDashboardData.php">BUY DATA</a></li>
-                <li><a href="..\Day7\DataDashboardCable.php">CABLE SUBSCRIPTION</a></li>
-                <li><a href="..\Day7\DataDashboardUtility.php">BILL PAYMENTS</a></li>
-                <li><a href="..\Day7\DataFundWallet.php">FUND WALLET</a></li>
-                <li><a href="..\Day7\DataWallet2Wallet.php">WALLET 2 WALLET</a></li>
-                <li><a href="..\Day7\DataTransaction.php">TRANSACTION HISTORY</a></li>
-                <li><a href="..\Day7\DataAccountSetting.php">ACCOUNT SETTINGS</a></li>
-                <li><a href="..\Day7\DataLogOut.php">LOGOUT</a></li>
-            </ul>
-        </div>
-        
+        <?php include('sidebar.php') ?>
+    
         <div class="container">
-            <button class="menu-toggle btn btn-primary" onclick="toggleMenu()">&#9776;</button>
             <h4 class="text-center pt-3">ACCOUNT SETTINGS</h4>
             <form action="">
                 <label for="">Email-Address</label><br>

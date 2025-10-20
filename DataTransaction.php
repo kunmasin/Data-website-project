@@ -1,12 +1,48 @@
 <?php
-include('dataDatabaseLogin.php'); // Database connection
+include ("dataDatabaseLogin.php");
+if (!isset($_COOKIE['users'])){
+    header('location: DataLogIn.php');
+    exit;
+}
+$loggedInUserEmail = $_COOKIE['users'];
+$sql = "SELECT * FROM `data_users` WHERE e_mail LIKE ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $loggedInUserEmail);
+$user = array();
 
-$query = "SELECT t.transaction_id, u.names, u.e_mail, u.phone_no, t.transaction_type, t.amount, t.status, t.created_at
-          FROM transactions t
-          JOIN data_users u ON t.user_id = u.id
-          ORDER BY t.created_at DESC";
+if($stmt->execute()){
+    $result = $stmt->get_result();
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+           $user = $row;
+        }
+    } else {
+        header('location: DataLogIn.php');
+        exit;
+    }
 
-$result = mysqli_query($conn, $query);
+} else {
+    echo "Error: " .$stmt->error;
+}
+$stmt->close();
+
+$userId = $user['id']; // Assuming your user table has an 'id' column
+
+$transactionQuery = "SELECT t.transaction_id, t.transaction_type, t.amount, t.status, t.created_at, t.details
+                     FROM transactions t
+                     WHERE t.user_id = ?
+                     ORDER BY t.created_at DESC";
+
+$transactionStmt = $conn->prepare($transactionQuery);
+$transactionStmt->bind_param('i', $userId);
+$transactionStmt->execute();
+$transactionResult = $transactionStmt->get_result();
+$transactions = $transactionResult->fetch_all(MYSQLI_ASSOC);
+$transactionStmt->close();
+$conn->close();
+
+include ('cookie.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,26 +58,9 @@ $result = mysqli_query($conn, $query);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<div class="d-flex">
-    <div class="dashboard-background" id="nav-menu">
-        <img class="user-image" src="../Day7/Day7templates/Photoroom-20240526_213830.png" alt="">
-        <h4 class="text-center">ONIYE ABDULLAHI</h4>
-        <ul>
-            <li><a href="../Day7/DataDashboard.php">DASHBOARD</a></li>
-            <li><a href="../Day7/DataDashoardAirtime.php">BUY AIRTIME</a></li>
-            <li><a href="../Day7/DataDashboardData.php">BUY DATA</a></li>
-            <li><a href="../Day7/DataDashboardCable.php">CABLE SUBSCRIPTION</a></li>
-            <li><a href="../Day7/DataDashboardUtility.php">BILL PAYMENTS</a></li>
-            <li><a href="../Day7/DataFundWallet.php">FUND WALLET</a></li>
-            <li><a href="../Day7/DataWallet2Wallet.php">WALLET 2 WALLET</a></li>
-            <li><a href="../Day7/DataTransaction.php">TRANSACTION HISTORY</a></li>
-            <li><a href="../Day7/DataAccountSetting.php">ACCOUNT SETTINGS</a></li>
-            <li><a href="../Day7/DataLogOut.php">LOGOUT</a></li>
-        </ul>
-    </div>
+    <?php include('sidebar.php') ?>
 
     <div class="container">
-        <button class="menu-toggle btn btn-primary" onclick="toggleMenu()">&#9776;</button>
 
         <div class="container">
     <h4 class="text-center">TRANSACTION HISTORY</h4><br>
@@ -49,10 +68,8 @@ $result = mysqli_query($conn, $query);
         <thead>
             <tr>
                 <th>S/N</th>
-                <th>Full Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Transaction Type</th>
+                <th>Type</th>
+                <th>Details</th>
                 <th>Amount</th>
                 <th>Status</th>
                 <th>Date</th>
@@ -60,30 +77,29 @@ $result = mysqli_query($conn, $query);
         </thead>
         <tbody>
             <?php
-            if (mysqli_num_rows($result) > 0) {
+            if (!empty($transactions)) {
                 $sn = 1;
-                while ($row = mysqli_fetch_assoc($result)) {
+                foreach ($transactions as $transaction) {
                     echo "<tr>
                             <td>{$sn}</td>
-                            <td>{$row['names']}</td>
-                            <td>{$row['e_mail']}</td>
-                            <td>{$row['phone_no']}</td>
-                            <td>{$row['transaction_type']}</td>
-                            <td>{$row['amount']}</td>
-                            <td>{$row['status']}</td>
-                            <td>{$row['created_at']}</td>
-                          </tr>";
+                            <td>" . htmlspecialchars($transaction['transaction_type']) . "</td>
+                            <td>" . htmlspecialchars($transaction['details']) . "</td>
+                            <td>" . htmlspecialchars($transaction['amount']) . "</td>
+                            <td>" . htmlspecialchars($transaction['status']) . "</td>
+                            <td>" . htmlspecialchars($transaction['created_at']) . "</td>
+                        </tr>";
                     $sn++;
                 }
             } else {
-                echo "<tr><td colspan='8' class='text-center'>No transactions found</td></tr>";
+                echo "<tr><td colspan='6' class='text-center'>No transactions found</td></tr>";
             }
             ?>
         </tbody>
     </table>
 </div>
 
-    </div>
+        </div>
 <script src="DataDashboard1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

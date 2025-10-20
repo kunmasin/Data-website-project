@@ -1,0 +1,173 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 1500px; /* Ensure the body does not exceed this width */
+}
+
+.container1{
+    color: black;
+    background-color:rgb(242, 242, 248);
+    font-size: 10px;
+    height: 130px;
+    width: 310px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid blue;
+    margin: 20px;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.myImage{
+    margin-left: 50px;
+    border-radius: 100%;
+    border: 0.5px groove white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 180px;
+    height: 150px;
+    background-color: white;
+}
+
+.inDline{
+    color: white;
+    background-color: rgb(3, 3, 59);
+    width: 300px;
+    height: 750px;
+    margin-left: -8px; 
+    margin-top: -15px;
+}
+h2{
+    color: black;
+}
+.myA{
+    color: white;
+    text-decoration: none;
+}
+.myA:hover{
+    color: white;
+    text-decoration: none;
+}
+.myP{
+    color: white;
+    border-bottom: 0.5px groove white;
+    border-right: none;
+    border-left: none;
+    text-align: left;
+    margin-left: 8px;
+    height: 35px;
+    text-transform: uppercase;
+    font-family:sans-serif;
+}
+
+.atRight{
+    display: block;
+    margin-left: 20px; 
+    margin-top: -20px;
+}
+
+
+/* General Styles */
+
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+}
+
+.btn.icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none; /* Remove default button border */
+}
+.content {
+    transition: margin-left 0.3s ease; /* Smooth transition */
+}
+
+/* Adjust the margin when the sidebar is shown */
+#inDline.show ~ .content {
+    margin-left: 300px; /* The width of the sidebar */
+}
+
+#inDline {
+    color: white;
+    background-color: rgb(54, 53, 53);
+    width: 300px;
+    height: 750px;
+    position: fixed;
+    top: 0;
+    left: -300px; /* Initially hidden */
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#inDline.show {
+    left: 0; /* Slide in */
+}
+
+/* Close Icon Styles */
+#closeSidebar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    margin: 10px;
+    cursor: pointer;
+    align-self: flex-end; /* Align to the top-right corner */
+}
+
+#closeSidebar:hover {
+    color: #ccc; /* Change color on hover */
+}
+
+/* Sidebar Content */
+.myImage {
+    margin: 20px;
+    border-radius: 100%;
+    border: 5px dotted white;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    margin-left: 60px;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    border-radius: 90px;
+}
+
+
+.myP {
+    color: white;
+    border-bottom: 0.5px groove white;
+    border-right: none;
+    border-left: none;
+    text-align: left;
+    margin-left: 8px;
+    height: 45px;
+    text-transform: uppercase;
+    font-family:sans-serif;
+}
+
+.myA {
+    color: white;
+    text-decoration: none;
+}
+
+.myA:hover {
+    text-decoration: none;
+    color: white;
+    /* Add underline on hover for better visibility */
+}
+.content{
+    margin-left: 20px;
+}

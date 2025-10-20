@@ -23,9 +23,11 @@
 </head>
 <body>
 <?php
+
+include ("dataDatabase.php");
 //Input variables set to empty for both error and normal  variables.
-$names_Err = $phoneErr = $emailErr = $pinErr = $password_Err = $COUNTRYErr = $genderErr = $imageErr= "";
-$names = $phone = $email = $pin= $pass_word = $COUNTRY = $gender = $image = $target_file = "" ; //NOTE i added $target_file here
+$names_Err = $phoneErr = $emailErr = $pinErr = $password_Err = $countryErr = $genderErr = $imageErr= "";
+$names = $phone = $email = $pin= $pass_word = $country = $gender = $image = $target_file = "" ; //NOTE i added $target_file here
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if (empty($_POST["names"])){
         $names_Err= "Name is required";
@@ -61,10 +63,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }else{
         $pass_word= test_input($_POST["pass_word"]);
     }
-    if(empty($_POST["COUNTRY"])){
-        $COUNTRYErr="Country is required";
+    if(empty($_POST["country"])){
+        $countryErr="Country is required";
     }else{
-        $COUNTRY= test_input($_POST["COUNTRY"]);
+        $country= test_input($_POST["country"]);
     }
     if(empty($_POST["gender"])){
         $genderErr="Gender is required";
@@ -111,19 +113,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     // if everything is ok, try to upload file
     } else {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            echo "The file ". $image_name. " has been uploaded.";
-        }else {
+            echo "<script>alert('The file ". $image_name. " has been uploaded.');</script>";
+        }
+        else {
             // Generate a unique name for the file
             $newFileName = uniqid() . '.' . $imageFileType;
             $target_file = $target_dir.$newFileName;
         }
     }}
+
+    $sql="INSERT INTO `data_users` (names, pass_word, gender, e_mail, phone_no, country, pin, image)
+ VALUES
+ ('$names','$pass_word','$gender','$email','$phone','$country','$pin', '$target_file')";
+if($conn ->query($sql) == TRUE){
+   // echo "Details Recorded Successfully";
+}else{
+    echo "Error: " .$sql."<br>".$conn->error;
+}
+
 function test_input($data){
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
     return $data;
 }
+
+
 
 ?>
 
@@ -138,21 +153,21 @@ function test_input($data){
             <input class="input" type="email" name="email" id="" placeholder="Enter Your Email-Address"><br>
             <input class="input" type="password" name="pin" id="" maxlength="4" placeholder="Enter Your Four Digits Pin"><br>
             <input class="input" type="password" name="pass_word" id="" maxlength="9" placeholder="Enter Your 9 Digits Password"><br>
-            <select class="input" name="COUNTRY" id="COUNTRY">
+            <select class="input" name="country" id="country">
                 <option value="Select Your Country" selected disabled>Select Your Country</option>
-                <option value="">Nigeria</option>
-                <option value="">USA</option>
-                <option value="">Ghanna</option>
-                <option value="">Cameroon</option>
-                <option value="">Portugal</option>
-                <option value="">South-Korea</option>
-                <option value="">North-Korea</option>
-                <option value="">Poland</option>
-                <option value="">Canada</option>
-                <option value="">South Africa</option>
-                <option value="">Pakistan</option>
-                <option value="">India</option>
-                <option value="">China</option>
+                <option value="Nigeria" >Nigeria</option>
+                <option value="USA" >USA</option>
+                <option value="Ghanna">Ghanna</option>
+                <option value="Cameroon" >Cameroon</option>
+                <option value="Portugal" >Portugal</option>
+                <option value="South-Korea" >South-Korea</option>
+                <option value="North-Korea" >North-Korea</option>
+                <option value="Poland" >Poland</option>
+                <option value="Canada" >Canada</option>
+                <option value="South Africa" >South Africa</option>
+                <option value="Pakistan" >Pakistan</option>
+                <option value="India" >India</option>
+                <option value="China" >China</option>
             </select><br>
             <select class="input" name="gender" id="gender">
                 <option value="Select Your Gender" selected disabled>Select Your Gender</option>
@@ -166,10 +181,8 @@ function test_input($data){
     </div>
 
     <footer class="text-center mt-3">
-        <p>&#169; OURDATA 2024 All Right Reserved, Developed by Oniye Abdullahi</p>
+        <p>&#169; OURDATA <?php echo $year = date('Y') ?> All Right Reserved, Developed by FruitfulCode</p>
     </footer>
-    <?php
-include "dataDatabase.php";
-?>
+  
 </body>
 </html>

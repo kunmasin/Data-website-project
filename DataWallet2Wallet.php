@@ -1,3 +1,32 @@
+<?php 
+include ("dataDatabaseLogin.php");
+if (!isset($_COOKIE['users'])){
+    header('location: DataLogIn.php');
+    exit;
+}
+$sql="SELECT * FROM `data_users` WHERE e_mail LIKE '".$_COOKIE['users']."'";
+$user = array();
+
+if($conn->query($sql) == TRUE){
+    $sql="SELECT * FROM `data_users` WHERE e_mail LIKE '".$_COOKIE['users']."'";
+        $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+           $user = $row; 
+        }
+    }else{
+        header('location: DataLogIn.php');
+        exit;
+    }
+    
+}else{
+    echo "Error: " .$sql."<br>".$conn->error;
+}
+$conn->close();
+include ('balance.php');
+?>
+
 <!DOCTYPE php>
 <php lang="en">
 <head>
@@ -14,28 +43,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="d-flex">
-        <div class="dashboard-background" id="nav-menu">
-            <img class="user-image" src="../Day7/Day7templates/Photoroom-20240526_213830.png" alt="">
-            <h4 class="text-center">ONIYE ADBULLAHI</h4>
-            <ul>
-                <li><a href="..\Day7\DataDashboard.php">DASHBOARD</a></li>
-                <li><a href="..\Day7\DataDashoardAirtime.php">BUY AIRTIME</a></li>
-                <li><a href="..\Day7\DataDashboardData.php">BUY DATA</a></li>
-                <li><a href="..\Day7\DataDashboardCable.php">CABLE SUBSCRIPTION</a></li>
-                <li><a href="..\Day7\DataDashboardUtility.php">BILL PAYMENTS</a></li>
-                <li><a href="..\Day7\DataFundWallet.php">FUND WALLET</a></li>
-                <li><a href="..\Day7\DataWallet2Wallet.php">WALLET 2 WALLET</a></li>
-                <li><a href="..\Day7\DataTransaction.php">TRANSACTION HISTORY</a></li>
-                <li><a href="..\Day7\DataAccountSetting.php">ACCOUNT SETTINGS</a></li>
-                <li><a href="..\Day7\DataLogOut.php">LOGOUT</a></li>
-            </ul>
-        </div>
+        <?php include('sidebar.php') ?>
+
         
         <div class="container">
-            <button class="menu-toggle btn btn-primary" onclick="toggleMenu()">&#9776;</button>
             <h4 class="text-center pt-3">WALLET TO WALLET</h4>
-            <h5>BALANCE: &#8358 <?php include ('balance.php')?></h5>
+            <h5>BALANCE: &#8358 <?php echo $balance ?></h5>
             <H5>TRANSACTION HISTORY</H5>
             <form action="">
                 <label for="">Amount to Send</label><br>

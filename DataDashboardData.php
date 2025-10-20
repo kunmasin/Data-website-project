@@ -1,33 +1,75 @@
 <?php
+session_start(); // Ensure session is started
+
+include("dataDatabaseLogin.php");
+
+// Check if the user is logged in (using cookies)
+if (!isset($_COOKIE['users'])) {
+    header('location: DataLogIn.php');
+    exit;
+}
+
+$loggedInUserEmail = $_COOKIE['users'];
+$sql = "SELECT id FROM `data_users` WHERE e_mail LIKE ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $loggedInUserEmail);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($result->num_rows === 1) {
+    $user = $result->fetch_assoc();
+    $userId = $user['id'];
+} else {
+    header('location: DataLogIn.php');
+    exit;
+}
+$stmt->close();
+
+
 include('dataDatabaseLogin.php'); // Database connection
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $user_id = $_SESSION['user_id']; // Assuming user is logged in
     $data_type = $_POST['data_type'];
-    $network_type = $_POST['network_type'];
+    $network = ""; // Get the selected network
     $phone_number = $_POST['phone_number'];
     $transaction_pin = $_POST['transaction_pin'];
     $amount = $_POST['amount'];
     $reference = uniqid('txn_'); // Unique transaction reference
     $status = 'pending';
+    $details = 'This user made a purchase of '. $amount .' '. $data_type .' '. $network . ' to '. $phone_number . ' the transaction is ' . $status;
+
+    // Determine the transaction type based on data_type and network
+    $transaction_type = 'Data';
+    $subscription = '';
+    if ($data_type === 'sme' && $network === 'mtn') {
+        $subscription = 'mtn_sme_data';
+    } else if ($data_type === 'gifting' && $network === 'mtn') {
+        $subscription = 'mtn_cg_data';
+    } else if ($data_type === 'gifting' && $network === 'airtel') {
+        $subscription = 'airtel_data'; // Adjust as needed
+    } else if ($data_type === 'gifting' && $network === 'glo') {
+        $subscription = 'glo_data'; // Adjust as needed
+    } else if ($data_type === 'gifting' && $network === 'mobile') {
+        $subscription = 'mobile_data'; // Adjust as needed
+    }
 
     // Insert transaction
-    $sql = "INSERT INTO transactions (user_id, transaction_type, amount, reference, status, details)
-            VALUES (?, ?, ?, ?, ?, ?)";
+    
+    $sql = "INSERT INTO transactions (user_id, transaction_type, subscription, amount, reference, status, details)
+    VALUES ('$userId','$transaction_type', '$subscription', '$amount', '$reference', '$status', '$details')";
 
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ssdsds', $user_id, $data_type, $amount, $reference, $status, $phone_number);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Transaction successful!');</script>";
-    } else {
-        echo "<script>alert('Transaction failed! Please try again.');</script>";
-    }
+if ($conn->query($sql) === TRUE) {
+echo "<script>alert('Transaction successful!');</script>";
+} else {
+echo "<script>alert('Transaction failed! Please try again.');</script>";
 }
+$conn->close();
+}
+include ('balance.php');
+include ('cookie.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,66 +80,177 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/c5355fa9b1.js" crossorigin="anonymous"></script> 
+    <script src="https://kit.fontawesome.com/c5355fa9b1.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="d-flex">
-        <div class="dashboard-background" id="nav-menu">
-            <img class="user-image" src="../Day7/Day7templates/Photoroom-20240526_213830.png" alt="">
-            <h4 class="text-center">ONIYE ADBULLAHI</h4>
-            <ul>
-                <li><a href="..\Day7\DataDashboard.php">DASHBOARD</a></li>
-                <li><a href="..\Day7\DataDashoardAirtime.php">BUY AIRTIME</a></li>
-                <li><a href="..\Day7\DataDashboardData.php">BUY DATA</a></li>
-                <li><a href="..\Day7\DataDashboardCable.php">CABLE SUBSCRIPTION</a></li>
-                <li><a href="..\Day7\DataDashboardUtility.php">BILL PAYMENTS</a></li>
-                <li><a href="..\Day7\DataFundWallet.php">FUND WALLET</a></li>
-                <li><a href="..\Day7\DataWallet2Wallet.php">WALLET 2 WALLET</a></li>
-                <li><a href="..\Day7\DataTransaction.php">TRANSACTION HISTORY</a></li>
-                <li><a href="..\Day7\DataAccountSetting.php">ACCOUNT SETTINGS</a></li>
-                <li><a href="..\Day7\DataLogOut.php">LOGOUT</a></li>
-            </ul>
-        </div>
-         
+       <?php include('sidebar.php') ?>
+
         <div class="container">
-            <button class="menu-toggle btn btn-primary" onclick="toggleMenu()">&#9776;</button>
             <h4 class="text-center pt-3">DATA SUBSCRIPTION</h4>
-            <h5>BALANCE: &#8358 <?php include ('balance.php')?></h5>
+            <h5>BALANCE: &#8358 <?php echo $balance ?></h5>
             <h5>TRANSACTION HISTORY</h5>
             <form action="" method="POST">
-                <label for="">Data Type</label><br>
-                <select class="dashboard-inputs" name="transaction_type" id="">
-                    <option value="Choose Data Type" selected disabled> Choose Data Type</option>
-                    <option value="">SME</option>
-                    <option value="">Cooperate Gifting</option>
-                    <option value="">Share Me</option>
-                </select><br>
+                <select class="form dashboard-inputs" name="data_type" id="data_type">
+                    <option disabled selected id="data_type">Data Type</option>
+                    <option id="sme" value="sme">SME</option>
+                    <option id="cg" value="gifting">Corporate Gifting</option>
+                </select>
 
-                <label for="">Network Type</label><br>
-                <select class="dashboard-inputs" name="transaction_type" id="">
-                    <option value="Choose Network Type" selected disabled> Choose Network Type</option>
-                    <option value="">MTN </option>
-                    <option value="">AIRTEL</option>
-                    <option value="">GLO</option>
-                    <option value="">9 Mobile</option>
-                </select><br>
-                <label for="">Network Type</label><br>
-                <select class="dashboard-inputs" name="transaction_type" id="">
-                    <option value="Choose Network Type" selected disabled> Choose Network Type</option>
-                    <option value="">MTN</option>
-                    <option value="">AIRTEL</option>
-                    <option value="">GLO</option>
-                    <option value="">9 Mobile</option>
-                </select><br>
-                <label for="">Mobile Phone Number</label><br>
-                <input type="text" class="dashboard-inputs" name="reference" placeholder="Mobile Phone Number"><br>
-                <label for="">Transaction Pin</label><br>
-                <input type="text" class="dashboard-inputs" placeholder="Transaction Pin">
+                <div class="data_bot2 hidden" id="network_div">
+                    <label for="network">Network <sup>*</sup></label><br>
+                    <select class="form dashboard-inputs" name="network" id="network">
+                        <option disabled selected>Network</option>
+                        <option id="mtn" value="mtn">MTN</option>
+                        <option id="glo" value="glo">GLO</option>
+                        <option id="airtel" value="airtel">AIRTEL</option>
+                        <option id="mobile" value="mobile">9Mobile</option>
+                    </select>
+                </div>
+
+                <div id="mtn_sme_plan" class="form hidden">
+                    <label for="mtn_sme_list">MTN SME Plan <sup>*</sup></label><br>
+                    <select class="form dashboard-inputs" id="mtn_sme_list" name="amount">
+                        <option disabled selected>Plan</option>
+                        <option value="500">MTN SME 1GB &#8358  500</option>
+                        <option value="950">MTN SME 2GB &#8358 950</option>
+                        <option value="1350">MTN SME 3GB &#8358 1350</option>
+                        <option value="1700">MTN SME 4GB &#8358 1700</option>
+                        <option value="2100">MTN SME 5GB &#8358 2100</option>
+                    </select>
+                </div>
+
+                <div id="mtn_cg_plan" class="form hidden">
+                    <label for="mtn_cg_list">MTN Corporate Gifting Plan <sup>*</sup></label><br>
+                    <select class="form dashboard-inputs" id="mtn_cg_list" name="amount">
+                        <option disabled selected>Plan</option>
+                        <option value="600">MTN CG 1GB &#8358 600</option>
+                        <option value="1150">MTN CG 2GB &#8358 1150</option>
+                        <option value="1650">MTN CG 3GB &#8358 1650</option>
+                        <option value="2100">MTN CG 4GB &#8358 2100</option>
+                        <option value="2600">MTN CG 5GB &#8358 2600</option>
+                        <option value="3100">MTN CG 6GB &#8358 3100</option>
+                    </select>
+                </div>
+
+                <div id="airtel_plans" class="form hidden">
+                    <label for="airtel_list">Airtel Plan <sup>*</sup></label><br>
+                    <select class="form dashboard-inputs" id="airtel_list" name="amount">
+                        <option disabled selected>Plan</option>
+                        <option value="480">Airtel 1GB &#8358 480</option>
+                        <option value="900">Airtel 2GB &#8358 900</option>
+                        <option value="1300">Airtel 3GB &#8358 1300</option>
+                        <option value="1650">Airtel 4GB &#8358 1650</option>
+                        <option value="2050">Airtel 5GB &#8358 2050</option>
+                        <option value="2400">Airtel 6GB &#8358 2400</option>
+                    </select>
+                </div>
+
+                <div id="glo_plans" class="form hidden">
+                    <label for="glo_list">GLO Plan <sup>*</sup></label><br>
+                    <select class="form dashboard-inputs" id="glo_list" name="amount">
+                        <option disabled selected>Plan</option>
+                        <option value="470">GLO 1GB &#8358 470</option>
+                        <option value="880">GLO 2GB &#8358 880</option>
+                        <option value="1250">GLO 3GB &#8358 1250</option>
+                        <option value="1600">GLO 4GB &#8358 1600</option>
+                        <option value="2000">GLO 5GB &#8358 2000</option>
+                        <option value="2350">GLO 6GB &#8358 2350</option>
+                    </select>
+                </div>
+
+                <div id="mobile_plans" class="form hidden">
+                    <label for="mobile_list">9Mobile Plan <sup>*</sup></label><br>
+                    <select class="form dashboard-inputs" id="mobile_list" name="amount">
+                        <option disabled selected>Plan</option>
+                        <option value="460">9Mobile 1GB &#8358 </option>
+                        <option value="860">9Mobile 2GB &#8358 860</option>
+                        <option value="1200">9Mobile 3GB &#8358 1200</option>
+                        <option value="1550">9Mobile 4GB &#8358 1550</option>
+                        <option value="1900">9Mobile 5GB &#8358 1900</option>
+                        <option value="2250">9Mobile 6GB &#8358 2250</option>
+                    </select>
+                </div>
+
+                <div id="empty_plan" class="form">
+                    <label for="empty_list">Plan <sup>*</sup></label><br>
+                    <select class="form dashboard-inputs" id="empty_list">
+                        <option disabled selected>Select Data Type First</option>
+                    </select>
+                </div>
+                <br>
+                <label for="phone_number">Mobile Phone Number</label><br>
+                <input type="text" class="dashboard-inputs" name="phone_number" placeholder="Mobile Phone Number"><br>
+                <label for="transaction_pin">Transaction Pin</label><br>
+                <input type="password" class="dashboard-inputs" name="transaction_pin" placeholder="Transaction Pin">
                 <input type="submit" class="dashboard-submits" value="Submit Transaction"><br>
             </form>
-</div> <!--End of Begining-->
+        </div> </div>
 
 <script src="DashboardScript.js"></script>
+
+<script>
+document.getElementById("data_type").addEventListener("change", function () {
+    const dataType = document.getElementById("data_type").value;
+    const networkDiv = document.getElementById("network_div");
+    const mtnSmePlanDiv = document.getElementById("mtn_sme_plan");
+    const airtelPlansDiv = document.getElementById("airtel_plans");
+    const gloPlansDiv = document.getElementById("glo_plans");
+    const mobilePlansDiv = document.getElementById("mobile_plans");
+    const emptyPlanDiv = document.getElementById("empty_plan");
+
+    // Hide all plan divs initially
+    networkDiv.classList.add("hidden");
+    mtnSmePlanDiv.classList.add("hidden");
+    airtelPlansDiv.classList.add("hidden");
+    gloPlansDiv.classList.add("hidden");
+    mobilePlansDiv.classList.add("hidden");
+    emptyPlanDiv.classList.add("hidden");
+
+    if (dataType === "sme") {
+        // Show MTN SME plans only
+        mtnSmePlanDiv.classList.remove("hidden");
+    } else if (dataType === "gifting") {
+        // Show network selection
+        networkDiv.classList.remove("hidden");
+    } else {
+        // Show a default message
+        emptyPlanDiv.classList.remove("hidden");
+    }
+});
+
+document.getElementById("network").addEventListener("change", function () {
+    const network = document.getElementById("network").value;
+    const dataType = document.getElementById("data_type").value;
+    const mtnSmePlanDiv = document.getElementById("mtn_sme_plan");
+    const mtnCgPlanDiv = document.getElementById("mtn_cg_plan");
+    const airtelPlansDiv = document.getElementById("airtel_plans");
+    const gloPlansDiv = document.getElementById("glo_plans");
+    const mobilePlansDiv = document.getElementById("mobile_plans");
+
+    // Hide all plan divs
+    mtnSmePlanDiv.classList.add("hidden");
+    mtnCgPlanDiv.classList.add("hidden");
+    airtelPlansDiv.classList.add("hidden");
+    gloPlansDiv.classList.add("hidden");
+    mobilePlansDiv.classList.add("hidden");
+
+    if (dataType === "gifting") {
+        if (network === "mtn") {
+            mtnCgPlanDiv.classList.remove("hidden");
+        } else if (network === "airtel") {
+            airtelPlansDiv.classList.remove("hidden");
+        } else if (network === "glo") {
+            gloPlansDiv.classList.remove("hidden");
+        } else if (network === "mobile") {
+            mobilePlansDiv.classList.remove("hidden");
+        }
+    } else if (dataType === "sme" && network === "mtn") {
+        mtnSmePlanDiv.classList.remove("hidden");
+    }
+});
+</script>
+
+
 </body>
 </html>

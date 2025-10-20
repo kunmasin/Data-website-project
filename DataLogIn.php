@@ -59,7 +59,7 @@
         </form>
     </div>
     <footer class="text-center mt-5">
-        <p>&#169; OURDATA 2024 All Right Reserved, Developed by Oniye Abdullahi</p>
+        <p>&#169; OURDATA <?php echo $year = date('Y') ?> All Right Reserved, Developed by FruitfulCode</p>
     </footer>
 
 

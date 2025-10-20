@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Balance</title>
+</head>
+<body>
+    <div>
+    <form  method="post">
+        <br>
+        <label> Which year were you born</label><br><br>
+        <input id="first_age" placeholder="Input the Year were you born"><br><br>
+        <label>What year are we now </label><br><br>
+        <input id="second_age" placeholder="Input the amount you want to remove here">
+        <br><br>
+        <button type="button" onclick="myBirth()">Check Your Age</button>
+        </form>
+    </div>
+
+    <p id="sum"></p>
+
+
+    <script>
+    function myBirth() {
+        let first_age= Number(document.getElementById("first_age"));
+        let second_age= Number(document.getElementById("second_age"));
+        let sum= Number(second_age - first_age) + " Years";
+        alert(sum);        
+    }
+    </script>
+
+
+
+<script>
+    let first_age= Number(prompt("What Year Were you born ?"));
+    let second_age= Number(prompt("What Year are we now ?"));
+    let sum= Number(second_age - first_age)+ " Years";
+    alert(sum);
+</script>
+</body>
+</html>

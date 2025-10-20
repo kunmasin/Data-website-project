@@ -1,0 +1,602 @@
+body{
+    width: 1500px;
+    height: 500px;
+}
+
+.nav-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Content sections */
+.data-content, .cable-content, .cables-buttons {
+    display: none;
+}
+
+.myImage{
+    margin-left: 50px;
+    border-radius: 100%;
+    border: 0.5px groove white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 180px;
+    height: 150px;
+    background-color: white;
+}
+
+.inDline{
+    color: white;
+    background-color: rgb(5, 29, 116);
+    width: 300px;
+    height: 750px;
+    margin-left: -8px; 
+    margin-top: -20px;
+}
+h2{
+    color: white;
+}
+.myA{
+    color: white;
+    text-decoration: none;
+}
+.myP{
+    color: black;
+    border-bottom: 0.5px groove white;
+    border-right: none;
+    border-left: none;
+    text-align: left;
+    margin-left: 8px;
+    height: 35px;
+    text-transform: uppercase;
+    font-family:sans-serif;
+}
+.atRight{
+    display: block;
+    margin-left: 310px; 
+    margin-top: -20px;
+}
+.main-container{
+    color: black;
+    background-color: white;
+    font-size: 10px;
+    height: 660px;
+    width: 1150px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    overflow: scroll;
+}
+.button-data{
+    background-color: green;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+
+.button-cable{
+    background-color: blue;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+
+.button_mtn{
+    background-color: rgb(227, 235, 5);
+    color: black;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+.button_airtel{
+    background-color: rgb(239, 0, 0);
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+.button_glo{
+    background-color: rgb(0, 143, 45);
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+.button_mobile{
+    background-color: rgb(0, 143, 14);
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+
+.pricing{
+    background-color: rgb(236, 232, 232);
+    width: 1170px;
+    padding: 10px;
+    color: black;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+    font-size: 20px;
+}
+.container_mtn{
+    color: black;
+    background-color: rgb(234, 242, 5);
+    font-size: 10px;
+    height: 710px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+.mtn{
+    background-color: rgb(241, 241, 0);
+    width: 1100px;
+    padding: 10px;
+    color: black;
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+}
+
+.container_mtn_cg{
+    color: black;
+    background-color: rgb(234, 242, 5);
+    font-size: 10px;
+    height: 710px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.mtn_cg{
+    background-color: rgb(241, 241, 0);
+    width: 1100px;
+    padding: 10px;
+    color: black;
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+}
+
+input{
+    width: 500px;
+    height: 45px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+span{
+    color: white;
+}
+
+.span{
+    background-color: rgb(255, 255, 255);
+    width: 30px;
+    padding: 16px;
+    margin-bottom: -15px;
+    color: black;
+    text-align: left;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    font-size: 15px;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+.click{
+    background-color: green;
+    color: white;
+    border-radius: 6px;
+    float: right;
+    padding: 10px;
+    border: none;
+}
+label{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.container_airtel{
+    color: white;
+    background-color: rgb(201, 11, 11);
+    font-size: 10px;
+    height: 710px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.airtel{
+    background-color: rgb(159, 14, 14);
+    width: 1100px;
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid white;
+}
+
+.container_glo{
+    color: white;
+    background-color: rgb(26, 102, 35);
+    font-size: 10px;
+    height: 710px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.glo{
+    background-color: rgb(17, 88, 37);
+    width: 1110px;
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid white;
+}
+
+.container_mobile{
+    color: white;
+    background-color: rgb(2, 85, 33);
+    font-size: 10px;
+    height: 710px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;   
+}
+
+.mobile{
+    background-color: rgb(5, 113, 32);
+    width: 1110px;
+    font-size: 20px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid white;
+}
+
+
+.click_glo_mobile{
+    background-color: yellow;
+    color: black;
+    border-radius: 6px;
+    float: right;
+    padding: 10px;
+    border: none;
+}
+
+/* Basic styles for visibility of Data price*/
+.container_mtn, .container_airtel, .container_glo, .container_mobile {
+    display: none;
+}
+
+.cables-buttons{
+    display: none;
+}
+
+/*Buttons for cable plan 
+.button_gotv, .button_dstv, .button_startimes {
+    display: none;
+}*/
+
+.button_gotv{
+    background: darkgreen;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+}
+.gotv1{
+    color:  yellow;
+}
+.button_dstv{
+    background-color: #192862;
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+    margin-left: 10px;
+}
+.button_startimes{
+    background: linear-gradient(to right, orange, blue);
+    color: white;
+    border-radius: 6px;
+    padding: 10px;
+    border: none;
+    margin-left: 10px;
+}
+
+.container_gotv{
+    color: white;
+    background-color: darkgreen;
+    font-size: 10px;
+    height: 520px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;  
+}
+.gotv{
+    background-color: lightgreen;
+    width: 1110px;
+    padding: 10px;
+    color: black;
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+}
+
+.container_dstv{
+    color: white;
+    background-color: #192862;
+    font-size: 10px;
+    height: 520px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;
+}
+.dstv{
+    background-color: #0330e1;
+    width: 1110px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+}
+
+.container_startimes{
+    color: white;
+    background: linear-gradient(to right, orange, blue);
+    font-size: 10px;
+    height: 520px;
+    width: 1110px;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+    float: left;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: -5px;  
+}
+.startimes{
+    background: linear-gradient(to left, orange, blue);
+    width: 1110px;
+    padding: 10px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    font-size: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 1px solid black;
+}
+
+/* Basic styles for visibility of cable price */
+.container_gotv, .container_dstv, .container_startimes {
+    display: none;
+}
+
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 1500px; /* Ensure the body does not exceed this width */
+}
+
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: white;
+}
+
+.btn.icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: none; /* Remove default button border */
+}
+.content {
+    transition: margin-left 0.3s ease; /* Smooth transition */
+}
+
+/* Adjust the margin when the sidebar is shown */
+#inDline.show ~ .content {
+    margin-left: 300px; /* The width of the sidebar */
+}
+
+#inDline {
+    color: white;
+    background-color: rgb(54, 53, 53);
+    width: 300px;
+    height: 750px;
+    position: fixed;
+    top: 0;
+    left: -300px; /* Initially hidden */
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+#inDline.show {
+    left: 0; /* Slide in */
+}
+
+/* Close Icon Styles */
+#closeSidebar {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    margin: 10px;
+    cursor: pointer;
+    align-self: flex-end; /* Align to the top-right corner */
+}
+
+#closeSidebar:hover {
+    color: #ccc; /* Change color on hover */
+}
+
+/* Sidebar Content */
+.myImage {
+    margin: 20px;
+    border-radius: 100%;
+    border: 5px dotted white;
+    width: 150px;
+    height: 150px;
+    background-color: white;
+    margin-left: 60px;
+}
+
+img{
+    width: 150px;
+    height: 150px;
+    border-radius: 90px;
+}
+
+
+.myP {
+    color: white;
+    border-bottom: 0.5px groove white;
+    border-right: none;
+    border-left: none;
+    text-align: left;
+    margin-left: 8px;
+    height: 45px;
+    text-transform: uppercase;
+    font-family:sans-serif;
+}
+
+.myA {
+    color: white;
+    text-decoration: none;
+}
+
+.myA:hover {
+    text-decoration: none;
+    color: white;
+    /* Add underline on hover for better visibility */
+}
+.content{
+    margin-left: 200px;
+}
+
+
+/* Smaller screens */
+@media (max-width: 599px) {
+    .inDline, .atRight, .main-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .new {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .container {
+        margin: 10px 0;
+    }
+
+    .cables-buttons {
+        display: block;
+    }
+
+    .button_cable {
+        width: 100%;
+    }
+
+    .button_gotv, .button_dstv, .button_startimes {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .container_gotv, .container_dstv, .container_startimes {
+        width: 100%;
+    }
+}
