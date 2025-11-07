@@ -1,110 +1,258 @@
-DROP TABLE IF EXISTS admin_det_reg;
-CREATE TABLE admin_det_reg(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    fullName VARCHAR(100),
-    eMail VARCHAR(100),
-    phoneNumber VARCHAR(12),
-    passWord VARCHAR(15),
-    date_joined TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 07, 2025 at 10:02 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
-DROP TABLE IF EXISTS transactions;
-CREATE TABLE transactions(
-    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
-    transaction_type VARCHAR(20),
-    details TEXT(255),
-    description TEXT(255),
-    device_type VARCHAR(30),
-    ip_address VARCHAR(40),
-    payment_method VARCHAR(20),
-    reference VARCHAR(60),
-    status VARCHAR(20),
-    currency VARCHAR(20),
-    amount DECIMAL,
-    user_id INT(11),
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
+--
+-- Database: `ourdata`
+--
 
-DROP TABLE IF EXISTS cable_plans;
-CREATE TABLE cable_plans(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    startimes_basic DECIMAL(11),
-    startimes_nova DECIMAL(11),
-    startimes_smart DECIMAL(11),
-    startimes_super DECIMAL(11),
-    gotv_jinja DECIMAL(11),
-    gotv_jolli DECIMAL(11),
-    gotv_max DECIMAL(11),
-    gotv_smallie DECIMAL(11),
-    dstv_compact DECIMAL(11),
-    dstv_great_wall_standalone DECIMAL(11),
-    dstv_padi DECIMAL(11),
-    dstv_yanga DECIMAL(11),
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS data_plans;
-CREATE TABLE data_plans(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    airtel_five DECIMAL(11),
-    airtel_four DECIMAL(11),
-    airtel_half DECIMAL(11),
-    airtel_one DECIMAL(11),
-    airtel_three DECIMAL(11),
-    airtel_two DECIMAL(11),
-    glo_five DECIMAL(11),
-    glo_four DECIMAL(11),
-    glo_half DECIMAL(11),
-    glo_one DECIMAL(11),
-    glo_three DECIMAL(11),
-    glo_two DECIMAL(11),
-    mobile_five DECIMAL(11),
-    mobile_four DECIMAL(11),
-    mobile_half DECIMAL(11),
-    mobile_one DECIMAL(11),
-    mobile_three DECIMAL(11),
-    mobile_two DECIMAL(11),
-    mtnCG_five DECIMAL(11),
-    mtnCG_four DECIMAL(11),
-    mtnCG_half DECIMAL(11),
-    mtnCG_one DECIMAL(11),
-    mtnCG_three DECIMAL(11),
-    mtnCG_two DECIMAL(11),
-    mtn_five DECIMAL(11),
-    mtn_four DECIMAL(11),
-    mtn_half DECIMAL(11),
-    mtn_one DECIMAL(11),
-    mtn_three DECIMAL(11),
-    mtn_two DECIMAL(11),
+--
+-- Table structure for table `admin_det_reg`
+--
 
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+CREATE TABLE `admin_det_reg` (
+  `id` int(11) NOT NULL,
+  `fullName` varchar(100) DEFAULT NULL,
+  `eMail` varchar(100) DEFAULT NULL,
+  `phoneNumber` varchar(12) DEFAULT NULL,
+  `passWord` varchar(15) DEFAULT NULL,
+  `date_joined` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `admin_det_reg`
+--
 
-DROP TABLE IF EXISTS wallet_balance;
-CREATE TABLE wallet_balance(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT(11),
-    current_balance DECIMAL(11),
-    previous_balance DECIMAL(11),
-    deduction_amount DECIMAL(11),
-    funded_amount DECIMAL(11),
-    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+INSERT INTO `admin_det_reg` (`id`, `fullName`, `eMail`, `phoneNumber`, `passWord`, `date_joined`) VALUES
+(8, 'The Fuirful Code', 'thefruitfulcode@gmail.com', '07045141032', 'fruitful', '2025-11-05 11:51:06');
 
+-- --------------------------------------------------------
 
-DROP TABLE IF EXISTS data_users;
-CREATE TABLE data_users(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    names VARCHAR(100),
-    pass_word VARCHAR(15),
-    gender VARCHAR(10),
-    e_mail VARCHAR(60),
-    phone_no VARCHAR(12),
-    country VARCHAR(40),
-    pin VARCHAR(4),
-    image VARCHAR(90),
-    date_joined TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+--
+-- Table structure for table `cable_plans`
+--
+
+CREATE TABLE `cable_plans` (
+  `id` int(11) NOT NULL,
+  `startimes_basic` decimal(11,0) DEFAULT NULL,
+  `startimes_nova` decimal(11,0) DEFAULT NULL,
+  `startimes_smart` decimal(11,0) DEFAULT NULL,
+  `startimes_super` decimal(11,0) DEFAULT NULL,
+  `gotv_jinja` decimal(11,0) DEFAULT NULL,
+  `gotv_jolli` decimal(11,0) DEFAULT NULL,
+  `gotv_max` decimal(11,0) DEFAULT NULL,
+  `gotv_smallie` decimal(11,0) DEFAULT NULL,
+  `dstv_compact` decimal(11,0) DEFAULT NULL,
+  `dstv_great_wall_standalone` decimal(11,0) DEFAULT NULL,
+  `dstv_padi` decimal(11,0) DEFAULT NULL,
+  `dstv_yanga` decimal(11,0) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_plans`
+--
+
+CREATE TABLE `data_plans` (
+  `id` int(11) NOT NULL,
+  `airtel_five` decimal(11,0) DEFAULT NULL,
+  `airtel_four` decimal(11,0) DEFAULT NULL,
+  `airtel_half` decimal(11,0) DEFAULT NULL,
+  `airtel_one` decimal(11,0) DEFAULT NULL,
+  `airtel_three` decimal(11,0) DEFAULT NULL,
+  `airtel_two` decimal(11,0) DEFAULT NULL,
+  `glo_five` decimal(11,0) DEFAULT NULL,
+  `glo_four` decimal(11,0) DEFAULT NULL,
+  `glo_half` decimal(11,0) DEFAULT NULL,
+  `glo_one` decimal(11,0) DEFAULT NULL,
+  `glo_three` decimal(11,0) DEFAULT NULL,
+  `glo_two` decimal(11,0) DEFAULT NULL,
+  `mobile_five` decimal(11,0) DEFAULT NULL,
+  `mobile_four` decimal(11,0) DEFAULT NULL,
+  `mobile_half` decimal(11,0) DEFAULT NULL,
+  `mobile_one` decimal(11,0) DEFAULT NULL,
+  `mobile_three` decimal(11,0) DEFAULT NULL,
+  `mobile_two` decimal(11,0) DEFAULT NULL,
+  `mtnCG_five` decimal(11,0) DEFAULT NULL,
+  `mtnCG_four` decimal(11,0) DEFAULT NULL,
+  `mtnCG_half` decimal(11,0) DEFAULT NULL,
+  `mtnCG_one` decimal(11,0) DEFAULT NULL,
+  `mtnCG_three` decimal(11,0) DEFAULT NULL,
+  `mtnCG_two` decimal(11,0) DEFAULT NULL,
+  `mtn_five` decimal(11,0) DEFAULT NULL,
+  `mtn_four` decimal(11,0) DEFAULT NULL,
+  `mtn_half` decimal(11,0) DEFAULT NULL,
+  `mtn_one` decimal(11,0) DEFAULT NULL,
+  `mtn_three` decimal(11,0) DEFAULT NULL,
+  `mtn_two` decimal(11,0) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_users`
+--
+
+CREATE TABLE `data_users` (
+  `id` int(11) NOT NULL,
+  `names` varchar(100) DEFAULT NULL,
+  `pass_word` varchar(15) DEFAULT NULL,
+  `gender` varchar(10) DEFAULT NULL,
+  `e_mail` varchar(60) DEFAULT NULL,
+  `phone_no` varchar(12) DEFAULT NULL,
+  `country` varchar(40) DEFAULT NULL,
+  `pin` varchar(4) DEFAULT NULL,
+  `image` varchar(90) DEFAULT NULL,
+  `date_joined` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `data_users`
+--
+
+INSERT INTO `data_users` (`id`, `names`, `pass_word`, `gender`, `e_mail`, `phone_no`, `country`, `pin`, `image`, `date_joined`) VALUES
+(3, 'Oniye Abdullahi Masud', 'kunmasin', 'Male', 'oniyeabdullahi00@gmail.com', '09015621510', 'Nigeria', '1234', 'profileUploads/1762342872_download (13).jpeg', '2025-11-05 11:41:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transactions`
+--
+
+CREATE TABLE `transactions` (
+  `transaction_id` int(11) NOT NULL,
+  `transaction_type` varchar(20) DEFAULT NULL,
+  `details` text DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `device_type` varchar(30) DEFAULT NULL,
+  `ip_address` varchar(40) DEFAULT NULL,
+  `payment_method` varchar(20) DEFAULT NULL,
+  `reference` varchar(60) DEFAULT NULL,
+  `status` varchar(20) DEFAULT NULL,
+  `currency` varchar(20) DEFAULT NULL,
+  `amount` decimal(10,0) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wallet_balance`
+--
+
+CREATE TABLE `wallet_balance` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `current_balance` decimal(11,0) DEFAULT NULL,
+  `previous_balance` decimal(11,0) DEFAULT NULL,
+  `deduction_amount` decimal(11,0) DEFAULT NULL,
+  `funded_amount` decimal(11,0) DEFAULT NULL,
+  `transaction_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin_det_reg`
+--
+ALTER TABLE `admin_det_reg`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `fullName` (`fullName`);
+
+--
+-- Indexes for table `cable_plans`
+--
+ALTER TABLE `cable_plans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `data_plans`
+--
+ALTER TABLE `data_plans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `data_users`
+--
+ALTER TABLE `data_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `transactions`
+--
+ALTER TABLE `transactions`
+  ADD PRIMARY KEY (`transaction_id`);
+
+--
+-- Indexes for table `wallet_balance`
+--
+ALTER TABLE `wallet_balance`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin_det_reg`
+--
+ALTER TABLE `admin_det_reg`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `cable_plans`
+--
+ALTER TABLE `cable_plans`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `data_plans`
+--
+ALTER TABLE `data_plans`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `data_users`
+--
+ALTER TABLE `data_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `transactions`
+--
+ALTER TABLE `transactions`
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `wallet_balance`
+--
+ALTER TABLE `wallet_balance`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

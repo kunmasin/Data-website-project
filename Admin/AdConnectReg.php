@@ -10,10 +10,10 @@ $conn= mysqli_connect($servername,$username,$password,$dbname);
 if(!$conn){
     die("Connection Failed: " .mysqli_connect_error());
 }
-echo "Connected Successfully ";
+//echo "Connected Successfully ";
 $sql="INSERT INTO `admin_det_reg` (fullName, eMail, phoneNumber, passWord) VALUES ('$fullName', '$eMail', '$phoneNumber', '$passWord')";
 if($conn ->query($sql) == TRUE){
-    echo "Details Recorded Successfully";
+    //echo "Details Recorded Successfully";
 }else{
     echo "Error: " .$sql."<br>".$conn->error;
 }
